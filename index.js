@@ -1,6 +1,16 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const connection = require("./database/conexao")
+
+
+//testando conexao
+connection.authenticate().then(()=>{
+    console.log('sucesso')
+}).catch((error)=>{
+    console.log("error")
+})
+
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
