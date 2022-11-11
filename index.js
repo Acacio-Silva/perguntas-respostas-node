@@ -34,6 +34,19 @@ app.get("/", (req, res) =>{
     
 });
 
+app.get("/pergunta/:id", (req, res)=>{
+    var id = req.params.id;
+    perguntaModel.findOne({
+        where:{id :id}
+    }).then((pergunta)=>{
+        if(pergunta!=undefined){
+            res.render('pergunta')
+        }else{
+            res.redirect('/')
+        }
+    })
+})
+
 app.get("/perguntar", (req, res) =>{
     res.render("perguntar");
 })
