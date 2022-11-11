@@ -33,8 +33,12 @@ app.get("/perguntar", (req, res) =>{
 app.post("/salvarPergunta", (req, res)=>{
     var titulo = req.body.titulo;
     var descricao = req.body.descricao;
-
-    res.send("titulo");
+    perguntaModel.create({
+        titulo: titulo,
+        descricao: descricao
+    }).then(()=>{
+        res.redirect('/')
+    })
 })
 
 
