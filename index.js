@@ -23,7 +23,13 @@ app.use(express.static('public'));
 
 
 app.get("/", (req, res) =>{
-    res.render("index")
+    perguntaModel.findAll({raw:true}).then((pergunta) =>{
+        console.log(pergunta);
+        res.render("index", {
+            pergunta: pergunta
+        })
+    })
+    
 });
 
 app.get("/perguntar", (req, res) =>{
