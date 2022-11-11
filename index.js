@@ -23,7 +23,9 @@ app.use(express.static('public'));
 
 
 app.get("/", (req, res) =>{
-    perguntaModel.findAll({raw:true}).then((pergunta) =>{
+    perguntaModel.findAll({raw:true, order:[
+        ['id','DESC'] // ASC = crescente - DESC = decrescente
+    ]}).then((pergunta) =>{
         console.log(pergunta);
         res.render("index", {
             pergunta: pergunta
